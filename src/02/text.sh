@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -e HOSTNAME = $(hostname)
+echo TIMEZONE = $(cat /etc/timezone)
+echo USER = $(whoami)
+echo OS = $(uname)
+echo DATE = $(date +"%d %B %Y %T")
+echo UPTIME = $(uptime -p)
+echo UPTIME_SEC = $(cat /proc/uptime)
+echo IP = $(hostname -I)
+echo MASK = $(ifconfig lo | grep netmask | awk '{print $4}')
+echo GATEWAY = $(hostname -i)
+echo RAM_TOTAL = $(free | grep Mem | awk '{printf("%.3f GB", $2 / 1000)}')
+echo RAM_USED = $(free | grep Mem | awk '{printf("%.3f GB", $3 / 1000)}')
+echo RAM_FREE = $(free | grep Mem | awk '{printf("%.3f GB", $4 / 1000)}')
+echo SPACE_ROOT = $(df /root/ | grep /dev/mapper/ | awk '{printf("%.2f Mb", $2 / 1000)}')
+echo SPACE_ROOT_USED = $(df /root/ | grep /dev/mapper/ | awk '{printf("%.2f Mb", $3 / 1000)}')
+echo SPACE_ROOT_FREE = $(df /root/ | grep /dev/mapper/ | awk '{printf("%.2f Mb", $4 / 1000)}')
